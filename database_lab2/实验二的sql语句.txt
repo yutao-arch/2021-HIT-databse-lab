@@ -1,0 +1,388 @@
+create table if not exists dormitory_room(
+    dormitory_num char(10) comment '宿舍号' not null,
+    bed_sum integer comment '床的个数',
+    primary key (dormitory_num)
+) default charset = UTF8;
+
+create table if not exists bed(
+    dormitory_num char(10) comment '宿舍号' not null,
+    bed_num integer comment '床号' not null,
+    bed_type char(12) comment '床的类型',
+    primary key (dormitory_num, bed_num),
+    foreign key (dormitory_num) references dormitory_room(dormitory_num)
+) default charset = UTF8;
+
+create table if not exists student_information(
+    student_num char(13) comment '学号' not null,
+    name char(14) comment '姓名',
+    age integer comment '年龄',
+    id_card_num char(18) comment '身份证号',
+    sex char(4) comment '性别',
+    primary key (student_num)
+) default charset = UTF8;
+
+create table if not exists connect_student_bed(
+    stay_num char(16) comment '入住编号' not null,
+    dormitory_num char(10) comment '宿舍号',
+    bed_num integer comment '床号',
+    student_num char(13) comment '学号',
+    primary key (stay_num),
+    foreign key (dormitory_num, bed_num) references bed(dormitory_num, bed_num),
+    foreign key (student_num) references student_information(student_num)
+) default charset = UTF8;
+
+create table if not exists apply_stay_prove(
+    student_num char(13) comment '学号' not null,
+    prove_id char(10) comment '证明编号',
+    sign_prove_college char(20) comment '开具证明学院',
+    primary key (student_num, prove_id),
+    foreign key (student_num) references student_information(student_num)
+) default charset = UTF8;
+
+create table if not exists dormitory_adm(
+    dormitory_adm_num char(13) comment '宿管号' not null,
+    name char(14) comment '姓名',
+    age integer comment '年龄',
+    primary key (dormitory_adm_num)
+) default charset = UTF8;
+
+create table if not exists work_task(
+    work_task_num char(8) comment '工作任务号' not null,
+    dormitory_num char(10) comment '宿舍号',
+    dormitory_adm_num char(13) comment '宿管号',
+    primary key (work_task_num),
+    foreign key (dormitory_num) references dormitory_room(dormitory_num),
+    foreign key (dormitory_adm_num) references dormitory_adm(dormitory_adm_num)
+) default charset = UTF8;
+
+create table if not exists supply(
+    supply_num char(13) comment '物资编号' not null,
+    supply_type char(10) comment '物资类型',
+    supply_price integer comment '物资价格',
+    primary key (supply_num)
+) default charset = UTF8;
+
+create table if not exists receive_supply_record(
+    stay_num char(16) comment '入住编号' not null,
+    receive_num char(8) comment '领取编号' not null,
+    supply_num char(13) comment '物资编号',
+    primary key (stay_num, receive_num),
+    foreign key (supply_num) references supply(supply_num),
+    foreign key (stay_num) references connect_student_bed(stay_num)
+) default charset = UTF8;
+
+insert into dormitory_room values ('1020', 4);
+insert into dormitory_room values ('1021', 4);
+insert into dormitory_room values ('2020', 6);
+insert into dormitory_room values ('2021', 6);
+insert into dormitory_room values ('3020', 2);
+insert into dormitory_room values ('3021', 2);
+
+insert into bed values ('1020', 1, '上下铺');
+insert into bed values ('1020', 2, '上下铺');
+insert into bed values ('1020', 3, '上下铺');
+insert into bed values ('1020', 4, '上下铺');
+
+insert into bed values ('1021', 1, '上下铺');
+insert into bed values ('1021', 2, '上下铺');
+insert into bed values ('1021', 3, '上下铺');
+insert into bed values ('1021', 4, '上下铺');
+
+insert into bed values ('2020', 1, '上下铺');
+insert into bed values ('2020', 2, '上下铺');
+insert into bed values ('2020', 3, '上下铺');
+insert into bed values ('2020', 4, '上下铺');
+insert into bed values ('2020', 5, '上下铺');
+insert into bed values ('2020', 6, '上下铺');
+
+insert into bed values ('2021', 1, '上下铺');
+insert into bed values ('2021', 2, '上下铺');
+insert into bed values ('2021', 3, '上下铺');
+insert into bed values ('2021', 4, '上下铺');
+insert into bed values ('2021', 5, '上下铺');
+insert into bed values ('2021', 6, '上下铺');
+
+insert into bed values ('3020', 1, '上床下桌');
+insert into bed values ('3020', 2, '上床下桌');
+
+insert into bed values ('3021', 1, '上床下桌');
+insert into bed values ('3021', 2, '上床下桌');
+
+insert into student_information values ('1180100801', '张一', 20, '422823199812254451', '男');
+insert into student_information values ('1180100802', '张二', 21, '422823199812254452', '男');
+insert into student_information values ('1180100803', '张三', 22, '422823199812254453', '男');
+insert into student_information values ('1180100804', '张四', 23, '422823199812254454', '男');
+
+insert into student_information values ('1180200805', '余一', 21, '422823199812254455', '女');
+insert into student_information values ('1180200806', '余二', 22, '422823199812254456', '女');
+insert into student_information values ('1180200807', '余三', 23, '422823199812254457', '女');
+insert into student_information values ('1180200808', '余四', 24, '422823199812254458', '女');
+
+insert into student_information values ('1180300809', '陈一', 19, '422823199812254411', '男');
+insert into student_information values ('1180300810', '陈二', 20, '422823199812254412', '男');
+insert into student_information values ('1180300811', '陈三', 21, '422823199812254413', '男');
+insert into student_information values ('1180300812', '陈四', 22, '422823199812254414', '男');
+insert into student_information values ('1180300813', '陈五', 23, '422823199812254415', '男');
+insert into student_information values ('1180300814', '陈六', 24, '422823199812254416', '男');
+
+insert into student_information values ('1180400815', '崔一', 20, '422823199812254421', '女');
+insert into student_information values ('1180400816', '崔二', 20, '422823199812254422', '女');
+insert into student_information values ('1180400817', '崔三', 21, '422823199812254423', '女');
+insert into student_information values ('1180400818', '崔四', 19, '422823199812254424', '女');
+insert into student_information values ('1180400819', '崔五', 23, '422823199812254425', '女');
+insert into student_information values ('1180400820', '崔六', 21, '422823199812254426', '女');
+
+insert into student_information values ('1180500821', '王一', 21, '422823199812254431', '男');
+insert into student_information values ('1180500822', '王二', 19, '422823199812254432', '男');
+
+insert into student_information values ('1180600823', '李一', 21, '422823199812254433', '女');
+insert into student_information values ('1180600824', '李二', 20, '422823199812254434', '女');
+
+insert into connect_student_bed values ('00000001', '1020', 1, '1180100801');
+insert into connect_student_bed values ('00000002', '1020', 2, '1180100802');
+insert into connect_student_bed values ('00000003', '1020', 3, '1180100803');
+insert into connect_student_bed values ('00000004', '1020', 4, '1180100804');
+
+insert into connect_student_bed values ('00000005', '1021', 1, '1180200805');
+insert into connect_student_bed values ('00000006', '1021', 2, '1180200806');
+insert into connect_student_bed values ('00000007', '1021', 3, '1180200807');
+insert into connect_student_bed values ('00000008', '1021', 4, '1180200808');
+
+insert into connect_student_bed values ('00000009', '2020', 1, '1180300809');
+insert into connect_student_bed values ('00000010', '2020', 2, '1180300810');
+insert into connect_student_bed values ('00000011', '2020', 3, '1180300811');
+insert into connect_student_bed values ('00000012', '2020', 4, '1180300812');
+insert into connect_student_bed values ('00000013', '2020', 5, '1180300813');
+insert into connect_student_bed values ('00000014', '2020', 6, '1180300814');
+
+insert into connect_student_bed values ('00000015', '2021', 1, '1180400815');
+insert into connect_student_bed values ('00000016', '2021', 2, '1180400816');
+insert into connect_student_bed values ('00000017', '2021', 3, '1180400817');
+insert into connect_student_bed values ('00000018', '2021', 4, '1180400818');
+insert into connect_student_bed values ('00000019', '2021', 5, '1180400819');
+insert into connect_student_bed values ('00000020', '2021', 6, '1180400820');
+
+insert into connect_student_bed values ('00000021', '3020', 1, '1180500821');
+insert into connect_student_bed values ('00000022', '3020', 2, '1180500822');
+
+insert into connect_student_bed values ('00000023', '3021', 1, '1180600823');
+insert into connect_student_bed values ('00000024', '3021', 2, '1180600824');
+
+
+insert into apply_stay_prove values ('1180100801', '10000001', '计算机学院');
+insert into apply_stay_prove values ('1180100802', '10000002', '计算机学院');
+insert into apply_stay_prove values ('1180100803', '10000003', '计算机学院');
+insert into apply_stay_prove values ('1180100804', '10000004', '计算机学院');
+
+insert into apply_stay_prove values ('1180200805', '10000005', '数学学院');
+insert into apply_stay_prove values ('1180200806', '10000006', '数学学院');
+insert into apply_stay_prove values ('1180200807', '10000007', '数学学院');
+insert into apply_stay_prove values ('1180200808', '10000008', '数学学院');
+
+insert into apply_stay_prove values ('1180300809', '10000009', '机电学院');
+insert into apply_stay_prove values ('1180300810', '10000010', '机电学院');
+insert into apply_stay_prove values ('1180300811', '10000011', '机电学院');
+insert into apply_stay_prove values ('1180300812', '10000012', '机电学院');
+insert into apply_stay_prove values ('1180300813', '10000013', '机电学院');
+insert into apply_stay_prove values ('1180300814', '10000014', '机电学院');
+
+insert into apply_stay_prove values ('1180400815', '10000015', '外语学院');
+insert into apply_stay_prove values ('1180400816', '10000016', '外语学院');
+insert into apply_stay_prove values ('1180400817', '10000017', '外语学院');
+insert into apply_stay_prove values ('1180400818', '10000018', '外语学院');
+insert into apply_stay_prove values ('1180400819', '10000019', '外语学院');
+insert into apply_stay_prove values ('1180400820', '10000020', '外语学院');
+
+insert into apply_stay_prove values ('1180500821', '10000021', '土木学院');
+insert into apply_stay_prove values ('1180500822', '10000022', '土木学院');
+
+insert into apply_stay_prove values ('1180600823', '10000023', '环境学院');
+insert into apply_stay_prove values ('1180600824', '10000024', '环境学院');
+
+insert into dormitory_adm values ('20000001', '谭姨', 42);
+insert into dormitory_adm values ('20000002', '张姨', 52);
+insert into dormitory_adm values ('20000003', '李姨', 46);
+insert into dormitory_adm values ('20000004', '彭姨', 56);
+insert into dormitory_adm values ('20000005', '申姨', 45);
+insert into dormitory_adm values ('20000006', '黄姨', 41);
+
+insert into work_task values ('30000001', '1020', '20000001');
+insert into work_task values ('30000002', '1021', '20000002');
+insert into work_task values ('30000003', '2020', '20000003');
+insert into work_task values ('30000004', '2021', '20000004');
+insert into work_task values ('30000005', '3020', '20000005');
+insert into work_task values ('30000006', '3021', '20000006');
+
+insert into work_task values ('30000007', '1020', '20000002');
+insert into work_task values ('30000008', '1020', '20000003');
+insert into work_task values ('30000009', '2020', '20000004');
+insert into work_task values ('30000010', '1021', '20000004');
+
+insert into supply values ('40000001', '被套', 200);
+insert into supply values ('40000002', '桌子', 100);
+insert into supply values ('40000003', '椅子', 80);
+insert into supply values ('40000004', '柜子', 30);
+insert into supply values ('40000005', '笔', 10);
+
+insert into receive_supply_record values ('00000001', '50000011', '40000001');
+insert into receive_supply_record values ('00000001', '50000012', '40000002');
+insert into receive_supply_record values ('00000001', '50000013', '40000003');
+insert into receive_supply_record values ('00000001', '50000014', '40000004');
+insert into receive_supply_record values ('00000001', '50000015', '40000005');
+
+insert into receive_supply_record values ('00000002', '50000021', '40000001');
+insert into receive_supply_record values ('00000002', '50000022', '40000002');
+insert into receive_supply_record values ('00000002', '50000023', '40000003');
+insert into receive_supply_record values ('00000002', '50000024', '40000004');
+insert into receive_supply_record values ('00000002', '50000025', '40000005');
+
+insert into receive_supply_record values ('00000003', '50000031', '40000001');
+insert into receive_supply_record values ('00000003', '50000032', '40000002');
+insert into receive_supply_record values ('00000003', '50000033', '40000003');
+insert into receive_supply_record values ('00000003', '50000034', '40000004');
+insert into receive_supply_record values ('00000003', '50000035', '40000005');
+
+insert into receive_supply_record values ('00000004', '50000041', '40000001');
+insert into receive_supply_record values ('00000004', '50000042', '40000002');
+insert into receive_supply_record values ('00000004', '50000043', '40000003');
+insert into receive_supply_record values ('00000004', '50000044', '40000004');
+insert into receive_supply_record values ('00000004', '50000045', '40000005');
+
+insert into receive_supply_record values ('00000005', '50000051', '40000001');
+insert into receive_supply_record values ('00000005', '50000052', '40000002');
+insert into receive_supply_record values ('00000005', '50000053', '40000003');
+insert into receive_supply_record values ('00000005', '50000054', '40000004');
+insert into receive_supply_record values ('00000005', '50000055', '40000005');
+
+insert into receive_supply_record values ('00000006', '50000061', '40000001');
+insert into receive_supply_record values ('00000006', '50000062', '40000002');
+insert into receive_supply_record values ('00000006', '50000063', '40000003');
+insert into receive_supply_record values ('00000006', '50000064', '40000004');
+insert into receive_supply_record values ('00000006', '50000065', '40000005');
+
+insert into receive_supply_record values ('00000007', '50000071', '40000001');
+insert into receive_supply_record values ('00000007', '50000072', '40000002');
+insert into receive_supply_record values ('00000007', '50000073', '40000003');
+insert into receive_supply_record values ('00000007', '50000074', '40000004');
+insert into receive_supply_record values ('00000007', '50000075', '40000005');
+
+insert into receive_supply_record values ('00000008', '50000081', '40000001');
+insert into receive_supply_record values ('00000008', '50000082', '40000002');
+insert into receive_supply_record values ('00000008', '50000083', '40000003');
+insert into receive_supply_record values ('00000008', '50000084', '40000004');
+insert into receive_supply_record values ('00000008', '50000085', '40000005');
+
+insert into receive_supply_record values ('00000009', '50000091', '40000001');
+insert into receive_supply_record values ('00000009', '50000092', '40000002');
+insert into receive_supply_record values ('00000009', '50000093', '40000003');
+insert into receive_supply_record values ('00000009', '50000094', '40000004');
+insert into receive_supply_record values ('00000009', '50000095', '40000005');
+
+insert into receive_supply_record values ('00000010', '50000101', '40000001');
+insert into receive_supply_record values ('00000010', '50000102', '40000002');
+insert into receive_supply_record values ('00000010', '50000103', '40000003');
+insert into receive_supply_record values ('00000010', '50000104', '40000004');
+insert into receive_supply_record values ('00000010', '50000105', '40000005');
+
+insert into receive_supply_record values ('00000011', '50000111', '40000001');
+insert into receive_supply_record values ('00000011', '50000112', '40000002');
+insert into receive_supply_record values ('00000011', '50000113', '40000003');
+insert into receive_supply_record values ('00000011', '50000114', '40000004');
+insert into receive_supply_record values ('00000011', '50000115', '40000005');
+
+insert into receive_supply_record values ('00000012', '50000121', '40000001');
+insert into receive_supply_record values ('00000012', '50000122', '40000002');
+insert into receive_supply_record values ('00000012', '50000123', '40000003');
+insert into receive_supply_record values ('00000012', '50000124', '40000004');
+insert into receive_supply_record values ('00000012', '50000125', '40000005');
+
+insert into receive_supply_record values ('00000013', '50000131', '40000001');
+insert into receive_supply_record values ('00000013', '50000132', '40000002');
+insert into receive_supply_record values ('00000013', '50000133', '40000003');
+insert into receive_supply_record values ('00000013', '50000134', '40000004');
+insert into receive_supply_record values ('00000013', '50000135', '40000005');
+
+insert into receive_supply_record values ('00000014', '50000141', '40000001');
+insert into receive_supply_record values ('00000014', '50000142', '40000002');
+insert into receive_supply_record values ('00000014', '50000143', '40000003');
+insert into receive_supply_record values ('00000014', '50000144', '40000004');
+insert into receive_supply_record values ('00000014', '50000145', '40000005');
+
+insert into receive_supply_record values ('00000015', '50000151', '40000001');
+insert into receive_supply_record values ('00000015', '50000152', '40000002');
+insert into receive_supply_record values ('00000015', '50000153', '40000003');
+insert into receive_supply_record values ('00000015', '50000154', '40000004');
+insert into receive_supply_record values ('00000015', '50000155', '40000005');
+
+insert into receive_supply_record values ('00000016', '50000161', '40000001');
+insert into receive_supply_record values ('00000016', '50000162', '40000002');
+insert into receive_supply_record values ('00000016', '50000163', '40000003');
+insert into receive_supply_record values ('00000016', '50000164', '40000004');
+insert into receive_supply_record values ('00000016', '50000165', '40000005');
+
+insert into receive_supply_record values ('00000017', '50000171', '40000001');
+insert into receive_supply_record values ('00000017', '50000172', '40000002');
+insert into receive_supply_record values ('00000017', '50000173', '40000003');
+insert into receive_supply_record values ('00000017', '50000174', '40000004');
+insert into receive_supply_record values ('00000017', '50000175', '40000005');
+
+insert into receive_supply_record values ('00000018', '50000181', '40000001');
+insert into receive_supply_record values ('00000018', '50000182', '40000002');
+insert into receive_supply_record values ('00000018', '50000183', '40000003');
+insert into receive_supply_record values ('00000018', '50000184', '40000004');
+insert into receive_supply_record values ('00000018', '50000185', '40000005');
+
+insert into receive_supply_record values ('00000019', '50000191', '40000001');
+insert into receive_supply_record values ('00000019', '50000192', '40000002');
+insert into receive_supply_record values ('00000019', '50000193', '40000003');
+insert into receive_supply_record values ('00000019', '50000194', '40000004');
+insert into receive_supply_record values ('00000019', '50000195', '40000005');
+
+insert into receive_supply_record values ('00000020', '50000201', '40000001');
+insert into receive_supply_record values ('00000020', '50000202', '40000002');
+insert into receive_supply_record values ('00000020', '50000203', '40000003');
+insert into receive_supply_record values ('00000020', '50000204', '40000004');
+insert into receive_supply_record values ('00000020', '50000205', '40000005');
+
+insert into receive_supply_record values ('00000021', '50000211', '40000001');
+insert into receive_supply_record values ('00000021', '50000212', '40000002');
+insert into receive_supply_record values ('00000021', '50000213', '40000003');
+insert into receive_supply_record values ('00000021', '50000214', '40000004');
+insert into receive_supply_record values ('00000021', '50000215', '40000005');
+
+insert into receive_supply_record values ('00000022', '50000221', '40000001');
+insert into receive_supply_record values ('00000022', '50000222', '40000002');
+insert into receive_supply_record values ('00000022', '50000223', '40000003');
+insert into receive_supply_record values ('00000022', '50000224', '40000004');
+insert into receive_supply_record values ('00000022', '50000225', '40000005');
+
+insert into receive_supply_record values ('00000023', '50000231', '40000001');
+insert into receive_supply_record values ('00000023', '50000232', '40000002');
+insert into receive_supply_record values ('00000023', '50000233', '40000003');
+insert into receive_supply_record values ('00000023', '50000234', '40000004');
+insert into receive_supply_record values ('00000023', '50000235', '40000005');
+
+insert into receive_supply_record values ('00000024', '50000241', '40000001');
+insert into receive_supply_record values ('00000024', '50000242', '40000002');
+insert into receive_supply_record values ('00000024', '50000243', '40000003');
+insert into receive_supply_record values ('00000024', '50000244', '40000004');
+insert into receive_supply_record values ('00000024', '50000245', '40000005');
+
+
+
+create view dormitory_work_task_20000004 as (select work_task_num, dormitory_num, dormitory_adm_num from dormitory_adm natural join work_task where dormitory_adm_num = '20000004');
+create view dormitory_work_task_20000003 as (select work_task_num, dormitory_num, dormitory_adm_num from dormitory_adm natural join work_task where dormitory_adm_num = '20000003');
+create view college_student_computer as (select * from student_information where student_num in (select student_num from apply_stay_prove where sign_prove_college = '计算机学院'));
+create view college_student_language as (select * from student_information where student_num in (select student_num from apply_stay_prove where sign_prove_college = '外语学院'));
+create view college_sumstudent as (select sign_prove_college, count(student_num) as sum_student from apply_stay_prove group by sign_prove_college);
+
+
+
+create index idx_age on student_information(age);
+create index idx_sex on student_information(sex);
+create index idx_sign_prove_college on apply_stay_prove(sign_prove_college);
+create index idx_supply_price on supply(supply_price );
+
+show index from student_information;
+show index from apply_stay_prove;
+show index from supply;

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6480d073-da5f-4dd1-8b8c-4f904cb3c9ab" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="jdbc:mysql://rm-bp1oo27t8762xhlob0o.mysql.rds.aliyuncs.com:3306/sct_yutao?&amp;useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="jdbc:mysql://rm-bp1oo27t8762xhlob0o.mysql.rds.aliyuncs.com:3306/sct_yutao?&amp;useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="jdbc:mysql://rm-bp1oo27t8762xhlob0o.mysql.rds.aliyuncs.com:3306/sct_yutao?&amp;useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8" type="feb32156:DbDataSourceImpl" />
+        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
+        <item name="sct_yutao: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1r9nCLkshL5JVsrc8hkZCot8Syq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../network_safety_lab1" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+  </component>
+  <component name="RunManager" selected="Application.ui">
+    <configuration name="create_table" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="create_table" />
+      <module name="database_lab1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="insert_data" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="insert_data" />
+      <module name="database_lab1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ui" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ui" />
+      <module name="database_lab1" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ui" />
+        <item itemvalue="Application.insert_data" />
+        <item itemvalue="Application.create_table" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:jdbc:mysql://rm-bp1oo27t8762xhlob0o.mysql.rds.aliyuncs.com:3306/sct_yutao?&amp;useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:jdbc:mysql://rm-bp1oo27t8762xhlob0o.mysql.rds.aliyuncs.com:3306/sct_yutao?&amp;useSSL=false&amp;serverTimezone=UTC&amp;characterEncoding=UTF-8" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@3dd55f9e" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6480d073-da5f-4dd1-8b8c-4f904cb3c9ab" name="Default Changelist" comment="" />
+      <created>1618397044793</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618397044793</updated>
+      <workItem from="1618397047614" duration="16511000" />
+      <workItem from="1618473577718" duration="686000" />
+      <workItem from="1618617840468" duration="4306000" />
+      <workItem from="1619002735641" duration="5146000" />
+      <workItem from="1620262463616" duration="40000" />
+      <workItem from="1620263241738" duration="14764000" />
+      <workItem from="1620884334929" duration="2485000" />
+      <workItem from="1620979710963" duration="3808000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="313" y="92" key="#Project_Structure" timestamp="1618401149674">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="313" y="92" key="#Project_Structure/0.0.1440.860@0.0.1440.860" timestamp="1618401149674" />
+    <state x="120" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1618621596737">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="120" y="173" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.860@0.0.1440.860" timestamp="1618621596737" />
+    <state x="501" y="188" key="FileChooserDialogImpl" timestamp="1620985095022">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="501" y="188" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1620985095022" />
+    <state width="1398" height="83" key="GridCell.Tab.0.bottom" timestamp="1620989269387">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1398" height="83" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1620989269387" />
+    <state width="1398" height="83" key="GridCell.Tab.0.center" timestamp="1620989269387">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1398" height="83" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1620989269387" />
+    <state width="1398" height="83" key="GridCell.Tab.0.left" timestamp="1620989269387">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1398" height="83" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1620989269387" />
+    <state width="1398" height="83" key="GridCell.Tab.0.right" timestamp="1620989269387">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state width="1398" height="83" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1620989269387" />
+    <state x="224" y="17" key="SettingsEditor" timestamp="1620562124136">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="224" y="17" key="SettingsEditor/0.0.1440.860@0.0.1440.860" timestamp="1620562124136" />
+    <state x="743" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1618413107576">
+      <screen x="0" y="0" width="1440" height="860" />
+    </state>
+    <state x="743" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1440.860@0.0.1440.860" timestamp="1618413107576" />
+  </component>
+</project>
